@@ -5,73 +5,74 @@ import static org.junit.Assert.*;
 
 public class SquadTest {
     @Test
-    public void creates_instanceOfSquad()
-    {
-        Squad squad = new Squad(5,"Squad 1","black lives matter");
-        assertTrue(squad instanceof Squad);
-    }
-    @Test
-    public void saves_maxSize_5()
-    {
-        Squad squad = new Squad(5,"Squad 1","black lives matter");
-        assertEquals(5, squad.getMax_size());
-    }
-    @Test
-    public void saves_squadName_squad_1()
-    {
-        Squad squad = new Squad(5,"Squad 1","black lives matter");
-        assertEquals("Squad 1", squad.getName());
-    }
-    @Test
-    public void saves_cause_black_lives_matterl()
-    {
-        Squad squad = new Squad(5,"Squad 1","black lives matter");
-        assertEquals("black lives matter", squad.getCause());
+    public void newSquad_instantiatesCorrectly_true() {
+        models.Squad newSquad = models.Squad.setUpNewSquad();
+        assertTrue(newSquad instanceof models.Squad);
     }
 
     @Test
-    public void all_returns_all_instancesOfSquad()
-    {
-        Squad squad = new Squad(5,"Squad 1","black lives matter");
-        Squad squad2 = new Squad(5,"Squad 1","black lives matter");
-        assertTrue(Squad.all().contains(squad));
-        assertTrue(Squad.all().contains(squad2));
-
+    public void newSquad_getName_String() {
+        models.Squad newSquad = models.Squad.setUpNewSquad();
+        assertEquals("Avengers", newSquad.getSquadName());
     }
 
     @Test
-    public void clear_emptiesAllSquadsFromList_0() {
-        Squad.clear();
-        assertEquals(Squad.all().size(), 0);
+    public void newSquad_getSize_Int() {
+        models.Squad newSquad = models.Squad.setUpNewSquad();
+        assertEquals(5, newSquad.getSize());
     }
 
     @Test
-    public void getId_SquadInstantiateWithAnId_1() {
-        Squad.clear();
-        Squad squad = new Squad(5,"Squad 1","black lives matter");
-        assertEquals(1,squad.getId());
+    public void newSquad_getPower_String() {
+        models.Squad newSquad = models.Squad.setUpNewSquad();
+        assertEquals("Infinity Stone", newSquad.getCause());
     }
 
     @Test
-    public void find_returnsCategoryWithSameId_secondCategory() {
-        Squad.clear();
-        Squad squad = new Squad(5,"Squad 1","black lives matter");
-        assertEquals(Squad.find(squad.getId()), squad);
+    public void newSquad_getInstances_true() {
+        models.Squad newSquad = models.Squad.setUpNewSquad();
+        models.Squad another = models.Squad.setUpNewSquad();
+        assertTrue(models.Squad.getInstances().contains(newSquad));
+        assertTrue(models.Squad.getInstances().contains(another));
     }
 
     @Test
-    public void getSquad_initiallyReturnsEmptyList_ArrayList() {
-        Squad.clear();
-        Squad squad = new Squad(5,"Squad 1","black lives matter");
-        assertEquals(0, squad.getHeroes().size());
+    public void newSquad_getSquadMembers_Array() {
+        models.Squad newSquad = models.Squad.setUpNewSquad();
+        models.Hero newHero = models.Hero.setUpNewHero();
+        models.Hero newHero1 = models.Hero.setUpNewHero1();
+        newSquad.setSquadMembers(newHero);
+        assertEquals("Arnold", newSquad.getSquadMembers().get(0).getName());
     }
 
     @Test
-    public void addsHeroesToList_true() {
-        Squad squad = new Squad(5,"Squad 1","black lives matter");
-        Hero hero = new Hero("Hulk",30,"Strength","Anger issues");
-        squad.addHero(hero);
-        assertTrue(squad.getHeroes().contains(hero));
+    public void newSquad_allTestSquadMembers_Array() {
+        models.Hero newHero = models.Hero.setUpNewHero();
+        models.Squad newSquad = models.Squad.setUpNewSquad();
+        newSquad.clearAllSquadMembers();
+        newSquad.getSquadMembers().add(newHero);
+        newSquad.getSquadMembers().add(newHero);
+        assertEquals("Arnold", newSquad.getSquadMembers().get(0).getName());
+    }
+
+    @Test
+    public void addMember_addsMemberToSquad_Hero() {
+        models.Hero newHero = models.Hero.setUpNewHero();
+        models.Squad testSquad = models.Squad.setUpNewSquad();
+        models.Squad newSquad = models.Squad.findBySquadId(1);
+        newSquad.clearAllSquadMembers();
+        newSquad.getSquadMembers().add(newHero);
+        newSquad.getSquadMembers().add(newHero);
+        assertEquals(2, newSquad.getSquadMembers().size());
+    }
+
+    @Test
+    public void setNewMember_hero() {
+        models.Hero.clearAllHeroes();
+        models.Hero newHwero = models.Hero.setUpNewHero();
+        models.Squad testSquad = models.Squad.setUpNewSquad();
+        testSquad.setSquadMembers(newHwero);
+
+        assertEquals(1, testSquad.getSquadMembers().get(0).getId());
     }
 }
-

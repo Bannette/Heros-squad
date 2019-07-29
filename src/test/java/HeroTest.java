@@ -1,84 +1,55 @@
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class HeroTest {
-    @Test
-    public void createsInstanceOfHero()
-    {
-        Hero hero = new Hero("Hulk",30,"Strength","Anger issues");
-        assertTrue(hero instanceof Hero);
-    }
 
     @Test
-    public void savesName()
-    {
-        Hero hero = new Hero("Hulk",30,"Strength","Anger issues");
-        assertEquals("Hulk",hero.getName());
+    public void newHero_instantiatesCorrectly_true() {
+        models.Hero newHero = models.Hero.setUpNewHero();
+        assertTrue(newHero instanceof models.Hero);
     }
-
     @Test
-    public void savesAge()
-    {
-        Hero hero = new Hero("Hulk",30,"Strength","Anger issues");
-        assertEquals(30,hero.getAge());
+    public void newHero_getName_String() {
+        models.Hero newHero = models.Hero.setUpNewHero();
+        assertEquals("Bumblebee",newHero.getName());
     }
-
     @Test
-    public void saveSpecialPowers()
-    {
-        Hero hero = new Hero("Hulk",30,"Strength","Anger issues");
-        assertEquals("Strength",hero.getSpecial_power());
+    public void newHero_getAge_Int() {
+        models.Hero newHero = models.Hero.setUpNewHero();
+        assertEquals(23,newHero.getAge());
     }
-
     @Test
-    public void savesWeakness()
-    {
-        Hero hero = new Hero("Hulk",30,"Strength","Anger issues");
-        assertEquals("Anger issues",hero.getWeakness());
+    public void newHero_getPower_String() {
+        models.Hero newHero = models.Hero.setUpNewHero();
+        assertEquals("flying",newHero.getPower());
     }
-
     @Test
-    public void all_returns_all_instancesOfHero()
-    {
-        Hero hero = new Hero("Hulk1",40,"Strength","Anger issues");
-        Hero hero1 = new Hero("Hulk",30,"Strength","Anger issues");
-        assertTrue(Hero.all().contains(hero));
-        assertTrue(Hero.all().contains(hero1));
+    public void newHero_getWeakness_String() {
+        models.Hero newHero = models.Hero.setUpNewHero();
+        assertEquals("fire",newHero.getWeakness());
     }
-
     @Test
-    public void clear_emptiesAllCategoriesFromList_0() {
-        Hero.clear();
-        assertEquals(Hero.all().size(), 0);
+    public void newHero_getAllInstances_true() {
+        models.Hero newHero = models.Hero.setUpNewHero();
+        models.Hero another = models.Hero.setUpNewHero();
+        assertTrue(models.Hero.getAllInstances().contains(newHero));
+        assertTrue(models.Hero.getAllInstances().contains(another));
     }
-
     @Test
-    public void getId_heroInstantiateWithAnId_1() {
-        Hero.clear();
-        Hero hero = new Hero("Hulk1",40,"Strength","Anger issues");
-        assertEquals(1,hero.getId());
+    public void newHero_getId_Int() {
+        models.Hero.clearAllHeroes();
+        models.Hero newHero = models.Hero.setUpNewHero();
+        models.Hero another = models.Hero.setUpNewHero();
+        models.Hero another1 = models.Hero.setUpNewHero();
+        assertEquals(3,another1.getId());
     }
-
     @Test
-    public void find_returnsCategoryWithSameId_secondCategory() {
-        Hero.clear();
-        Hero hero = new Hero("Hulk1",40,"Strength","Anger issues");
-        assertEquals(Hero.find(hero.getId()), hero);
+    public void newHero_findById_id() {
+        models.Hero.clearAllHeroes();
+        models.Hero newHero = models.Hero.setUpNewHero();
+        models.Hero another = models.Hero.setUpNewHero();
+        assertEquals(2, models.Hero.findById(another.getId()).getId());
     }
-
-    @Test
-    public void find_hero_by_name() {
-        Hero.clear();
-        Hero hero = new Hero("Hulk1",40,"Strength","Anger issues");
-        assertTrue(Hero.findHeroByName("Hulk1"));
-    }
-
-    @Test
-    public void find_returnsNullWhenNoTaskFound_null() {
-        assertTrue(Hero.find(1000) == null);
-    }
-
-
-
 }

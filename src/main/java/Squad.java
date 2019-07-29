@@ -1,54 +1,42 @@
+package models;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class Squad {
-    private int max_size;
-    private String name;
+
+    private int squadId;
+    private String squadName;
+    private int squadSize;
     private String cause;
-    private static List<Squad> instances = new ArrayList<Squad>();
-    private int id;
-    private List<Hero> heroes;
+    private ArrayList<models.Hero>  squadMembers = new ArrayList<>();
+    private static ArrayList<Squad> instances = new ArrayList<>();
 
-    public Squad(int max_size, String name, String cause) {
-        this.max_size = max_size;
-        this.name = name;
+
+    public Squad(String name, int size, String cause ){
+        squadName = name;
+        squadSize = size;
         this.cause = cause;
+        this.squadMembers = new ArrayList<>();
         instances.add(this);
-        id = instances.size();
-        heroes = new ArrayList<Hero>();
-    }
+        this.squadId = instances.size();
 
-    public int getMax_size() {
-        return max_size;
     }
+    public int getSquadId(){return squadId;}
+    public static Squad findBySquadId(int id) {return instances.get(id-1);}
+    public String getSquadName() {return squadName;}
+    public int getSize() {return squadSize;}
+    public String getCause() {return this.cause;}
+    public static ArrayList<Squad> getInstances(){return instances;}
+    public ArrayList<models.Hero> getSquadMembers(){
+        return squadMembers;
+    }
+    public void setSquadMembers(models.Hero newMember) {
+        squadMembers.add(newMember);
+    }
+    public static void clearAllSquads(){ instances.clear(); }
+    public void clearAllSquadMembers(){ getSquadMembers().clear(); }
 
-    public String getName() {
-        return name;
-    }
+    public static Squad setUpNewSquad(){return new Squad("Avengers",5,"Infinity Stone");}
+    public static Squad setUpNewSquad1(){return new Squad("GameBoy",5,"PUBG");}
 
-    public String getCause() {
-        return cause;
-    }
-    public static List<Squad> all() {
-        return instances;
-    }
-    public static void clear() {
-        instances.clear();
-    }
-
-    public int getId()
-    {
-        return id;
-    }
-
-    public static Squad find(int id) {
-        return instances.get(id - 1);
-    }
-    public List<Hero> getHeroes()
-    {
-        return heroes;
-    }
-    public void addHero(Hero hero) {
-        heroes.add(hero);
-    }
 }
