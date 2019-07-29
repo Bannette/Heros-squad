@@ -1,0 +1,30 @@
+{{#partial "content"}}
+    <section class="landing-pg">
+        <div class="land-left">
+        </div>
+        <div class="land-right">
+        </div>
+
+        <div class="squad">
+            <div id="newMember">
+                <p class="close">&cross;</p>
+                <h2>Choose Squad Members</h2>
+                {{#each heroes}}
+                    <div class="hero-item">
+
+                        <div class="hero-detail">
+                            <a class="btns" href="/squad/new/{{id}}">Add To Squad</a>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        <h2>
+            <a class="btns" href="/squad-form">Create Your Squad</a>
+            <br><br>
+
+</h2>
+        </div>
+    </section>
+{{/partial}}
+
+{{> layout.hbs}}

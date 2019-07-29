@@ -45,16 +45,16 @@ public class App {
             model.put("hero",hero);
             return new ModelAndView(model, "hero.hbs");
         }, new HandlebarsTemplateEngine());
+//
+//        get("/new/:id",(req, res) ->{
+//            Map<String, Object> model = new HashMap<>();
+//            int idOfHero = Integer.parseInt(req.params(":id"));
+//            Hero foundHero = Hero.findById(idOfHero);
+//            model.put("hero",foundHero);
+//            return new ModelAndView(model, "more.hbs");
+//        }, new HandlebarsTemplateEngine());
 
-        get("/new/:id",(req, res) ->{
-            Map<String, Object> model = new HashMap<>();
-            int idOfHero = Integer.parseInt(req.params(":id"));
-            Hero foundHero = Hero.findById(idOfHero);
-            model.put("hero",foundHero);
-            return new ModelAndView(model, "more.hbs");
-        }, new HandlebarsTemplateEngine());
-
-        get("/squadform",(req, res) ->{
+        get("/squad-form",(req, res) ->{
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "squadform.hbs");
         }, new HandlebarsTemplateEngine());
