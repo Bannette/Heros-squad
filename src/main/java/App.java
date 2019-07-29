@@ -1,9 +1,10 @@
-import static spark.Spark.*;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import spark.ModelAndView;
-import spark.template.velocity.VelocityTemplateEngine;
+import spark.template.handlebars.HandlebarsTemplateEngine;
+import static spark.Spark.*;
 
 public class App {
     public static void main(String[] args) {
@@ -29,13 +30,15 @@ public class App {
 
             model.put("template", "templates/home.hbs" );
             return new ModelAndView(model, layout);
-        }, new VelocityTemplateEngine());
+        }, new HandlebarsTemplateEngine());
+
 
         get("/squadform", (request, response) -> {
 
             model.put("template", "templates/squadform.hbs");
             return new ModelAndView(model, layout);
-        }, new HandlebarTemplateEngine());
+        }, new HandlebarsTemplateEngine());
+
 
         get("/squad", (request, response) -> {
 
@@ -47,13 +50,15 @@ public class App {
             model.put("membernumber", membernumber);
             model.put("template", "templates/squadteam.hbs");
             return new ModelAndView(model, layout);
-        }, new HandlebarTemplateEngine());
+        }, new HandlebarsTemplateEngine());
+
 
         get("/heroform", (request, response) -> {
 
             model.put("template", "templates/heroform.hbs");
             return new ModelAndView(model, layout);
-        }, new HandlebarTemplateEngine());
+        }, new HandlebarsTemplateEngine());
+
 
         get("/hero", (request, response) -> {
 
@@ -69,13 +74,15 @@ public class App {
             model.put("heroage", heroage);
             model.put("template", "templates/hero.hbs");
             return new ModelAndView(model, layout);
-        }, new HandlebarTemplateEngine());
+        }, new HandlebarsTemplateEngine());
+
 
         get("/herolist", (request, response) -> {
 
             model.put("template", "templates/listhero.hbs" );
             return new ModelAndView(model, layout);
-        }, new VelocityTemplateEngine());
+        }, new HandlebarsTemplateEngine());
+
     }
 }
 

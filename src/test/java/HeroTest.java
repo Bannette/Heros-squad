@@ -1,31 +1,84 @@
-
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
-@Test
-public  void  addHero_Sucess_True(){
-        try{
-        assertTrue(squad.addHero(hero));
-        }
-        catch(Exception ex){
-        System.out.println(ex.getMessage());
-        }
-        }
+import static org.junit.Assert.*;
 
-@Test
-public void getHeros_initiallyReturnsEmptyList_ArrayList() {
-        Squad.clear();
-        Squad testSquad = new Squad("Marvel","Fighting Evil");
-        assertEquals(0, testSquad.getHeroes().size());
-        }
+public class HeroTest {
+    @Test
+    public void createsInstanceOfHero()
+    {
+        Hero hero = new Hero("Hulk",30,"Strength","Anger issues");
+        assertTrue(hero instanceof Hero);
+    }
 
-@Test
-public void addHero_addsHero_true() {
-        Squad testSquad = new Squad("Marvel","Fighting Evil");
-        Hero testHero = new Hero("Mr Robot","23","Laser Eyes","Pepper Spray");
-        testSquad.addHero(testHero);
-        assertTrue(testSquad.getHeroes().contains(testHero));
-        }
-        }
+    @Test
+    public void savesName()
+    {
+        Hero hero = new Hero("Hulk",30,"Strength","Anger issues");
+        assertEquals("Hulk",hero.getName());
+    }
 
+    @Test
+    public void savesAge()
+    {
+        Hero hero = new Hero("Hulk",30,"Strength","Anger issues");
+        assertEquals(30,hero.getAge());
+    }
+
+    @Test
+    public void saveSpecialPowers()
+    {
+        Hero hero = new Hero("Hulk",30,"Strength","Anger issues");
+        assertEquals("Strength",hero.getSpecial_power());
+    }
+
+    @Test
+    public void savesWeakness()
+    {
+        Hero hero = new Hero("Hulk",30,"Strength","Anger issues");
+        assertEquals("Anger issues",hero.getWeakness());
+    }
+
+    @Test
+    public void all_returns_all_instancesOfHero()
+    {
+        Hero hero = new Hero("Hulk1",40,"Strength","Anger issues");
+        Hero hero1 = new Hero("Hulk",30,"Strength","Anger issues");
+        assertTrue(Hero.all().contains(hero));
+        assertTrue(Hero.all().contains(hero1));
+    }
+
+    @Test
+    public void clear_emptiesAllCategoriesFromList_0() {
+        Hero.clear();
+        assertEquals(Hero.all().size(), 0);
+    }
+
+    @Test
+    public void getId_heroInstantiateWithAnId_1() {
+        Hero.clear();
+        Hero hero = new Hero("Hulk1",40,"Strength","Anger issues");
+        assertEquals(1,hero.getId());
+    }
+
+    @Test
+    public void find_returnsCategoryWithSameId_secondCategory() {
+        Hero.clear();
+        Hero hero = new Hero("Hulk1",40,"Strength","Anger issues");
+        assertEquals(Hero.find(hero.getId()), hero);
+    }
+
+    @Test
+    public void find_hero_by_name() {
+        Hero.clear();
+        Hero hero = new Hero("Hulk1",40,"Strength","Anger issues");
+        assertTrue(Hero.findHeroByName("Hulk1"));
+    }
+
+    @Test
+    public void find_returnsNullWhenNoTaskFound_null() {
+        assertTrue(Hero.find(1000) == null);
+    }
+
+
+
+}
