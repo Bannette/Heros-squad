@@ -4,7 +4,7 @@
   padding: 0;
   box-sizing: border-box;
   transition: all 0.2s ease-out;
-  font-family: 'Abel', sans-serif;
+  font-family: 'Eczar', serif;
 }
 a{
   text-decoration: none;
@@ -16,7 +16,8 @@ a{
   cursor: pointer;
   outline: none;
   padding: 5px 20px;
-  font-family: 'Abel', sans-serif;
+  font-family: 'Ceviche One', cursive;
+  font-size: 1.53em;
   border-radius: 20px;
   margin-top: 5px;
 
