@@ -80,6 +80,10 @@ color:white;
 ::placeholder{
   color: rgb(124, 122, 122);
 }
+.home{
+text align:centre;
+}
+
 
 
 @media only screen and (max-width: 700px){

@@ -13,7 +13,7 @@ public class SquadTest {
     @Test
     public void newSquad_getName_String() {
         models.Squad newSquad = models.Squad.setUpNewSquad();
-        assertEquals("Avengers", newSquad.getSquadName());
+        assertEquals("Wakanda", newSquad.getSquadName());
     }
 
     @Test
@@ -25,7 +25,7 @@ public class SquadTest {
     @Test
     public void newSquad_getPower_String() {
         models.Squad newSquad = models.Squad.setUpNewSquad();
-        assertEquals("Infinity Stone", newSquad.getCause());
+        assertEquals("fighters", newSquad.getCause());
     }
 
     @Test
@@ -42,7 +42,7 @@ public class SquadTest {
         models.Hero newHero = models.Hero.setUpNewHero();
         models.Hero newHero1 = models.Hero.setUpNewHero1();
         newSquad.setSquadMembers(newHero);
-        assertEquals("Arnold", newSquad.getSquadMembers().get(0).getName());
+        assertEquals("BummbleBee", newSquad.getSquadMembers().get(0).getName());
     }
 
     @Test
@@ -52,7 +52,7 @@ public class SquadTest {
         newSquad.clearAllSquadMembers();
         newSquad.getSquadMembers().add(newHero);
         newSquad.getSquadMembers().add(newHero);
-        assertEquals("Arnold", newSquad.getSquadMembers().get(0).getName());
+        assertEquals("BummbleBee", newSquad.getSquadMembers().get(0).getName());
     }
 
     @Test

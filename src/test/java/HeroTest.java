@@ -13,7 +13,7 @@ public class HeroTest {
     @Test
     public void newHero_getName_String() {
         models.Hero newHero = models.Hero.setUpNewHero();
-        assertEquals("Bumblebee",newHero.getName());
+        assertEquals("BummbleBee",newHero.getName());
     }
     @Test
     public void newHero_getAge_Int() {
