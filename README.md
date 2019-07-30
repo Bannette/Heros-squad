@@ -17,8 +17,8 @@ https://github.com/Bannette/Heros-squad
 
 You need the following installed on your machine
 
-java
-JDK - Java Development Kit
+* java
+* JDK - Java Development Kit
 To confirm run the following command $ gradle run
 
 # TECHNOLOGIES USED
