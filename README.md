@@ -3,7 +3,7 @@
 # AUTHOR NAME: BANNETTE ALOO ODEMBO
 
 # DESCRIPTION OF A PROJECT
-It is a type of substitution cipher in which each letter in the plaintext is replaced by a letter some fixed number of positions down the alphabet
+This application allows you to recruit a well-balanced team of superheroes to a squad
 
 # BDD
 ## INPUT: User is able to assign a Hero to a single squad
